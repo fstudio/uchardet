@@ -130,6 +130,14 @@ else (NOT WIN32)
 		ARCHIVE DESTINATION
 			${CMAKE_INSTALL_LIBDIR}
 	)
+	if(NOT MSVC)
+		target_link_libraries(${UCHARDET_LIBRARY}
+			-static
+			-static-libstdc++
+			-static-libgcc
+		)
+	endif(NOT MSVC)
+	
 endif (NOT WIN32)
 
 if (UCHARDET_STATIC_LIBRARY)
